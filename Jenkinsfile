@@ -6,8 +6,14 @@
 // def UATIMAGENAME = "sampledotnet:UATReady-1.0.0"
 
 pipeline {
-    agent any
-
+    agent {
+        docker {
+            image 'jenkins/dotnet-60:6.0-42'
+        }
+    }
+    // environment {
+    //     dotnet = '/var/lib/jenkins'
+    // }
     stages {
         stage('Clone') {
             steps {
