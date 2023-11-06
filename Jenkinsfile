@@ -9,18 +9,22 @@ pipeline {
     agent any
 
     stages {
-    stage('Clone') {
-        checkout scm
-    }
-    stage('Restore') {
-        sh "dotnet restore app/app.csproj --force --verbosity d" // --configfile nuget.config 
-    }
-    //   stage('Publish') {
-    //     sh "dotnet publish Test.csproj --no-restore  -c Release /p:MicrosoftNETPlatformLibrary=Microsoft.NETCore.App"
-    //   }
-    //   stage('Build Image') {
-    //     sh "oc -n $DEV_PROJECTNAME start-build $BUILDCONFIGNAME --from-dir=./bin/Release/netcoreapp2.2/rhel.7-x64/publish --follow"
-    //     sh "oc -n $DEV_PROJECTNAME tag $DEV_PROJECTNAME/$IMAGE_NAME $UAT_PROJECTNAME/$UATIMAGENAME"
-    //   }
+        stage('Clone') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Restore') {
+            steps {
+                sh "dotnet restore app/app.csproj --force --verbosity d" // --configfile nuget.config 
+            }
+        }
+        //   stage('Publish') {
+        //     sh "dotnet publish Test.csproj --no-restore  -c Release /p:MicrosoftNETPlatformLibrary=Microsoft.NETCore.App"
+        //   }
+        //   stage('Build Image') {
+        //     sh "oc -n $DEV_PROJECTNAME start-build $BUILDCONFIGNAME --from-dir=./bin/Release/netcoreapp2.2/rhel.7-x64/publish --follow"
+        //     sh "oc -n $DEV_PROJECTNAME tag $DEV_PROJECTNAME/$IMAGE_NAME $UAT_PROJECTNAME/$UATIMAGENAME"
+        //   }
     }
 }
