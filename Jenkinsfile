@@ -7,7 +7,9 @@
 
 pipeline {
     agent {
-        label 'dotnet'
+        kubernetes {
+            defaultContainer 'dotnet'
+        }
     }
     stages {
         stage('Clone') {
