@@ -5,19 +5,17 @@
 // def IMAGE_NAME="sampledotnet:latest"
 // def UATIMAGENAME = "sampledotnet:UATReady-1.0.0"
 
-pipeline {
-    podTemplate {
-        node('dotnet') {
-            stages {
-                stage('Clone') {
-                    steps {
-                        checkout scm
-                    }
+podTemplate {
+    node('dotnet') {
+        stages {
+            stage('Clone') {
+                steps {
+                    checkout scm
                 }
-                stage('Restore') {
-                    steps {
-                        sh "dotnet restore app/app.csproj --force --verbosity d" // --configfile nuget.config 
-                    }
+            }
+            stage('Restore') {
+                steps {
+                    sh "dotnet restore app/app.csproj --force --verbosity d" // --configfile nuget.config 
                 }
             }
         }
