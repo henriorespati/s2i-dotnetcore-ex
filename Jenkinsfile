@@ -6,16 +6,18 @@
 // def UATIMAGENAME = "sampledotnet:UATReady-1.0.0"
 
 podTemplate {
-    node('dotnet') {
-        stages {
-            stage('Clone') {
-                steps {
-                    checkout scm
+    node(POD_LABEL) {
+        container('dotnet') {
+            stages {
+                stage('Clone') {
+                    steps {
+                        checkout scm
+                    }
                 }
-            }
-            stage('Restore') {
-                steps {
-                    sh "dotnet restore app/app.csproj --force --verbosity d" // --configfile nuget.config 
+                stage('Restore') {
+                    steps {
+                        sh "dotnet restore app/app.csproj --force --verbosity d" // --configfile nuget.config 
+                    }
                 }
             }
         }
