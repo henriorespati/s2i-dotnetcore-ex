@@ -8,7 +8,7 @@
 pipeline {
     agent {
         kubernetes {
-            defaultContainer 'dotnet'
+            yamlFile 'pod.yaml'
         }
     }
     stages {

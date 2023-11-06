@@ -1,0 +1,11 @@
+spec:
+  containers:
+  - name: jnlp
+    env:
+    - name: CONTAINER_ENV_VAR
+      value: jnlp
+  - name: dotnet
+    image: jenkins/dotnet-60:6.0-42
+    env:
+    - name: CONTAINER_ENV_VAR
+      value: dotnet
