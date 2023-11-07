@@ -5,7 +5,7 @@ spec:
     - name: CONTAINER_ENV_VAR
       value: jnlp
   - name: dotnet
-    image: image-registry.openshift-image-registry.svc:5000/jenkins/dotnet-60:6.0-42
+    image: dotnet:6.0
     env:
     - name: CONTAINER_ENV_VAR
       value: dotnet
